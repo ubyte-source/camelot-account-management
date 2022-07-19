@@ -1,13 +1,13 @@
 {
-	"name": "energia-europa/energia-europa-account",
+	"name": "energia-source/camelot-account-management",
 	"type": "project",
-	"description": "Energia Europa e-account",
+	"description": "Camelot - Account Management",
 	"keywords": [
 		"ubyte",
 		"energia europa",
-		"e-account"
+		"camelot account management"
 	],
-	"homepage": "https://source.cloud.google.com/energia-cloud-camelot/energia-europa-account",
+	"homepage": "https://github.com/energia-source/camelot-account-management",
 	"license": "MIT",
 	"authors": [
 		{
