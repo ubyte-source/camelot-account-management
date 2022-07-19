@@ -1,0 +1,109 @@
+{
+	"name": "energia-europa/energia-europa-account",
+	"type": "project",
+	"description": "Energia Europa e-account",
+	"keywords": [
+		"ubyte",
+		"energia europa",
+		"e-account"
+	],
+	"homepage": "https://source.cloud.google.com/energia-cloud-camelot/energia-europa-account",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Paolo Fabris",
+			"email": "support@ubyte.it",
+			"homepage": "https://www.ubyte.it/",
+			"role": "Developer"
+		}
+	],
+	"require": {
+		"php": ">=7.2",
+		"ext-mbstring": "*",
+		"ext-zip": "*",
+		"knight/armor": "3.2.2",
+		"knight/artifact-entity": "5.9.6",
+		"knight/artifact-entity-adapter-arangodb": "1.8.1",
+		"knight/artifact-iam": "2.6.0",
+		"widget/tabs": "5.0.0",
+		"widget/sidepanel": "5.0.0",
+		"widget/nav": "5.0.0",
+		"widget/modal": "4.0.0",
+		"widget/menu": "4.0.0",
+		"widget/infinite": "3.1.0",
+		"widget/header": "4.0.0",
+		"widget/form": "6.0.1",
+		"widget/button": "4.0.1",
+		"widget/xhr": "3.0.0",
+		"widget/asset": "6.0.2"
+	},
+	"autoload": {
+		"psr-4": {
+			"applications\\": "applications/",
+			"configurations\\": "configurations/",
+			"extensions\\": "extensions/"
+		}
+	},
+	"repositories": [
+		{
+			"type": "vcs",
+			"url": "https://github.com/energia-source/knight-armor"
+		},
+		{
+			"type": "vcs",
+			"url": "https://github.com/energia-source/knight-artifact-entity"
+		},
+		{
+			"type": "vcs",
+			"url": "https://github.com/energia-source/knight-artifact-entity-adapter-arangodb"
+		},
+		{
+			"type": "vcs",
+			"url": "https://github.com/energia-source/knight-artifact-iam"
+		},
+		{
+			"type": "vcs",
+			"url": "https://github.com/energia-source/widget-infinite"
+		},
+		{
+			"type": "vcs",
+			"url": "https://github.com/energia-source/widget-form"
+		},
+		{
+			"type": "vcs",
+			"url": "https://github.com/energia-source/widget-sidepanel"
+		},
+		{
+			"type": "vcs",
+			"url": "https://github.com/energia-source/widget-nav"
+		},
+		{
+			"type": "vcs",
+			"url": "https://github.com/energia-source/widget-modal"
+		},
+		{
+			"type": "vcs",
+			"url": "https://github.com/energia-source/widget-menu"
+		},
+		{
+			"type": "vcs",
+			"url": "https://github.com/energia-source/widget-header"
+		},
+		{
+			"type": "vcs",
+			"url": "https://github.com/energia-source/widget-button"
+		},
+		{
+			"type": "vcs",
+			"url": "https://github.com/energia-source/widget-tabs"
+		},
+		{
+			"type": "vcs",
+			"url": "https://github.com/energia-source/widget-xhr"
+		},
+		{
+			"type": "vcs",
+			"url": "https://github.com/energia-source/widget-asset"
+		}
+	]
+}

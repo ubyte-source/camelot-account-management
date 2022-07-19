@@ -1,0 +1,20 @@
+div#main, div#content { transition: all 0.2s ease-out; }
+div#main { position: fixed; top: 50px; right: 0; left: 250px; bottom: 0; overflow: hidden; }
+div#main div#content { right: 0; left: 0; position: absolute; top: 63px; bottom: 0; overflow-y: scroll; }
+div#main div#content div.table-wrapper { padding: 24px; }
+div#main.menu-crush { left: 50px; }
+div#main div#wrapper div.resize { transition: all 0.2s linear; }
+
+div#main div.sidepanel { top: 63px; }
+div#main div.sidepanel div.content div#setting div.search, div#main div.sidepanel div.content div#setting div.list { margin-left: 8px; }
+div#main div.sidepanel div.content div#setting div.search { margin-right: 8px; }
+
+div.modal article.content p { margin-bottom: 8px; }
+div.modal article.content p.bolder { font-weight: bolder; }
+div.modal article.content form { margin-top: 8px; }
+div.modal article.content form div.alert { margin: 4px 0; }
+div.modal article.content form div.content { padding: 0; }
+
+div.modal article.bottom div.buttons-form { position: relative; margin-top: 1rem; padding: 4px; text-align: right; }
+div.modal article.bottom div.buttons-form button { margin: 8px 0 8px 8px; }
+div.modal article.bottom div.buttons-form button:last-child { margin-right: 0 !important; }

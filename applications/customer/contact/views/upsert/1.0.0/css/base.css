@@ -1,0 +1,17 @@
+div#main { transition: all 0.2s ease-out; z-index: 1024; }
+div#main { position: fixed; top: 50px; right: 0; bottom: 0; left: 250px; }
+div#main div#wrapper { position: absolute; top: 63px; left: 0; bottom: 0; right: 0; overflow-y: auto; }
+div#main div#wrapper div#content { padding: 24px; }
+div#main.menu-crush { left: 50px; }
+
+div#main div#content div.buttons-form { position: relative; margin-top: 1rem; margin-bottom: 1rem; text-align: right; }
+div#main div#content div.buttons-form button { margin: 8px; margin-right: 4px; }
+div#main div#content div.buttons-form button:last-child { margin-right: 0 !important; }
+div#main div#content div.buttons-form.hide { display: none; }
+
+div.modal div.wrapper article.content div.widget-infinite-setting { position: relative; margin-top: 16px; height: 320px; }
+
+div.modal div.wrapper article.content div.buttons-form { position: relative; margin-top: 16px; padding: 4px; text-align: right; }
+
+div#main div.sidepanel div.content div#setting div.search, div#main div.sidepanel div.content div#setting div.list { margin-left: 8px; }
+div#main div.sidepanel div.content div#setting div.search { margin-right: 8px; }
