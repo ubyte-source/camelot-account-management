@@ -17,11 +17,11 @@
     window.elements = {};
     window.elements.content = document.createElement('div');
     window.elements.content.id = 'content';
-window.elements.content.className = 'widget-infinite-enable-print';
+    window.elements.content.className = 'widget-infinite-enable-print';
 
     window.elements.main = document.createElement('div');
     window.elements.main.id = 'main';
-window.elements.main.className = 'widget-infinite-enable-print';
+    window.elements.main.className = 'widget-infinite-enable-print';
     window.page.addHTMLElement(window.elements.main);
 
     window.elements.wrapper = document.createElement('div');

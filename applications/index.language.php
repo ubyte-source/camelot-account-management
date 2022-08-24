@@ -3,7 +3,7 @@
 // START - ENG ==========================================================
 
 namespace language\en\applications\header {
-    const app_name = 'Energia Europa Account';
+    const app_name = 'Account Management';
 }
 
 namespace language\en\applications\header\buttons {

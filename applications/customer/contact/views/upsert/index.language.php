@@ -2,6 +2,9 @@
 
 // START - ENG ==========================================================
 
+namespace language\en\applications\customer\contact\views\upsert\header {
+    const app_name = 'Account Management';
+}
 
 namespace language\en\applications\customer\contact\views\upsert\header\buttons {
     const my_account = 'Profile';
