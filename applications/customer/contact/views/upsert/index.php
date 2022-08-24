@@ -12,8 +12,10 @@ use Knight\armor\Composer;
 use Knight\armor\Language;
 use Knight\armor\Navigator;
 
-use applications\sso\user\database\Vertex as User;
+use applications\sso\user\database\Vertex as Setting;
 use applications\customer\contact\forms\Upsert;
+use applications\sso\user\forms\Associate;
+use applications\sso\user\forms\Book;
 
 const WIDGETS = [
     'upsert'
@@ -22,16 +24,29 @@ const WIDGETS = [
 $navigator = Navigator::get();
 
 $policies_application_basename = IAMConfiguration::getApplicationBasename();
-$policies = Sso::getPolicies($policies_application_basename . '/' . '%', 'iam/user/view/upsert', 'iam/user/action/update/me', 'iam/user/action/read');
+$policies = Sso::getPolicies(
+    $policies_application_basename . '/' . '%',
+    'iam/user/view/upsert',
+    'iam/user/action/update/me',
+    'iam/user/action/create',
+    'iam/user/action/read'
+);
 
-$setting = [];
+$setting = array('book' => Setting::getSettings('sso', 'user', 'user', 'book'));
 foreach (WIDGETS as $widget) {
     $navigator_widget = $navigator;
-    if (4 === array_push($navigator_widget, $widget)) $setting[$widget] = User::getSettings(...$navigator_widget);
+    if (4 === array_push($navigator_widget, $widget))
+        $setting[$widget] = Setting::getSettings(...$navigator_widget);
 }
 
 $upsert = new Upsert();
 $upsert = $upsert->human();
+
+$book = new Book();
+$book = $book->human();
+
+$associate = new Associate();
+$associate = $associate->human();
 
 $whoami = Sso::getWhoami();
 
@@ -76,7 +91,9 @@ $translate = Language::getTextsNamespaceName(__namespace__);
     window.page.user = <?= Output::json($whoami); ?>;
     window.page.user.setting = <?= Output::json($setting) ?>;
     window.page.tables = {
+        associate: <?= Output::json($associate); ?>,
         upsert: <?= Output::json($upsert); ?>,
+        book: <?= Output::json($book); ?>
     };
 </script>
 

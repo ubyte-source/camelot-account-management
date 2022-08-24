@@ -3,6 +3,7 @@
 namespace applications\customer\contact\actions;
 
 use IAM\Sso;
+use IAM\Request as IAMRequest;
 use IAM\Configuration as IAMConfiguration;
 
 use Knight\armor\Output;
@@ -33,7 +34,8 @@ $contact_query = ArangoDB::start(...$contact_query_hierarchy);
 $contact = $contact_query->begin();
 $contact = $contact->useEdge(UserToContact::getName())->vertex();
 $contact_fields = $contact->getFields();
-foreach ($contact_fields as $field) $field->setProtected(true);
+foreach ($contact_fields as $field)
+    $field->setProtected(true);
 
 $contact->getField(Arango::KEY)->setProtected(false)->setRequired(true)->setValue($contact_field_key_value);
 
@@ -45,6 +47,7 @@ if (!!$errors = $contact->checkRequired()->getAllFieldsWarning()) {
     Output::concatenate('errors', $errors);
     Output::print(false);
 }
+
 
 if (!Sso::youHaveNoPolicies($application_basename . '/customer/contact/action/read/all')) $contact_query = ArangoDB::start($contact);
 
@@ -69,7 +72,8 @@ $father_query_select_statement_query = $father_query_select_statement->getQuery(
 
 $upsert = new Upsert();
 $upsert_field = $upsert->getFields();
-foreach ($upsert_field as $field) $field->setProtected(false); 
+foreach ($upsert_field as $field)
+    $field->setProtected(false); 
 
 $contact_query_select_return_statement = new Statement();
 
@@ -126,6 +130,11 @@ $contact_query_select_response = reset($contact_query_select_response);
 $upsert = new Upsert();
 $upsert->setSafeMode(false)->setReadMode(true);
 $upsert->setFromAssociative($contact_query_select_response);
+
+IAMRequest::setOverload(
+    'iam/user/action/read',
+    'iam/user/action/read/all'
+);
 
 if ($upsert->checkFieldExists('share')) {
     $upsert_share = $upsert->getfield('share');

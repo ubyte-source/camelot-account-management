@@ -3,7 +3,6 @@
 namespace applications\customer\contact\actions;
 
 use IAM\Sso;
-use IAM\Request as IAMRequest;
 use IAM\Configuration as IAMConfiguration;
 
 use Knight\armor\Output;
@@ -31,8 +30,6 @@ $upsert_owner->setProtected(false)->setRequired(true);
 $upsert->setFromAssociative((array)Request::post());
 $upsert->vies()->google();
 
-IAMRequest::setOverload('iam/user/action/hierarchy');
-
 $hierarchy = User::getHierarchy(User::INCLUDEME);
 if (false === in_array($upsert_owner->getValue(), $hierarchy, false)) $upsert_owner->setDefault();
 
@@ -47,7 +44,8 @@ if (!!$errors = $upsert->checkRequired(true)->getAllFieldsWarning()) {
 
 $contact = new Contact();
 $contact_fields = $contact->getFields();
-foreach ($contact_fields as $field) $field->setProtected(false);
+foreach ($contact_fields as $field)
+    $field->setProtected(false);
 
 $contact->getField('owner')->setProtected(false)->setRequired(true);
 $contact->setFromAssociative($upsert->getAllFieldsValues(false, false));
@@ -79,14 +77,13 @@ if (!$upsert->getField('related')->isDefault()) {
 
 $upsert_share = $upsert->getField('share');
 $upsert_share_value = $upsert_share->getValue();
-if (null !== $upsert_share_value && false === $upsert_share->isDefault()) {
-    $upsert_share_value = array_intersect($upsert_share_value, Sso::getHierarchy());
-    foreach ($upsert_share_value as $item)
+if (null !== $upsert_share_value && false === $upsert_share->isDefault())
+    foreach (array_intersect($upsert_share_value, Sso::getHierarchy()) as $item)
         $contact->useEdge(ContactToUser::getName())->vertex()->getField(Sso::IDENTITY)->setSafeModeDetached(false)->setValue($item);
-}
 
 $management_fields = array_intersect(Vertex::MANAGEMENT, $contact->getAllFieldsProtectedName());
-foreach ($management_fields as $name) $contact->getField($name)->setProtected(false)->setRequired(true)->setValue(Sso::getWhoamiKey());
+foreach ($management_fields as $name)
+    $contact->getField($name)->setProtected(false)->setRequired(true)->setValue(Sso::getWhoamiKey());
 
 $contact_query_insert_response = $contact_query_insert->run();
 if (null === $contact_query_insert_response) Output::print(false);

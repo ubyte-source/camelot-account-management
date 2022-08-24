@@ -18,8 +18,11 @@ use applications\customer\contact\forms\Claim;
 $navigator = Navigator::get();
 
 $policies_application_basename = IAMConfiguration::getApplicationBasename();
-$policies = Sso::getPolicies($policies_application_basename . '/' . '%', 'iam/user/view/upsert', 'iam/user/action/update/me');
-
+$policies = Sso::getPolicies(
+    $policies_application_basename . '/' . '%',
+    'iam/user/view/upsert',
+    'iam/user/action/update/me'
+);
 
 $claim = new Claim();
 $claim = $claim->human();

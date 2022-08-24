@@ -2,30 +2,71 @@
 
 // START - ENG ==========================================================
 
-namespace language\en\applications\customer\contact\views\upsert\header {
-    const app_name = 'Energia Europa Account';
-}
 
 namespace language\en\applications\customer\contact\views\upsert\header\buttons {
-    const my_account = 'My Account';
+    const my_account = 'Profile';
     const logout = 'Logout';
 }
+
 namespace language\en\applications\customer\contact\views\upsert\nav {
     const add = 'Add';
     const edit = 'Edit';
 }
 
-namespace language\en\applications\customer\contact\views\upsert\button {
-    const add = 'add';
-    const save = 'Save';
-    const submit_public = 'Public';
-    const loader = 'Saving in progress';
+namespace language\en\applications\customer\contact\views\upsert\nav\buttons {
+    const edit = 'Edit';
+    const associate = 'Associated persons';
+    const add = 'Add';
+    const dissociate = 'Dissociate';
+    const remove = 'Remove Person';
+    const show_settings = 'Show settings';
+    const hide_settings = 'Hide settings';
+    const loader = 'Saving';
 }
 
-namespace language\en\applications\customer\contact\views\upsert {
-    const contact = 'Registered office';
-    const contact_human = 'Contact Human';
-    const contact_reference = 'Agency';
+namespace language\en\applications\customer\contact\views\upsert\sidepanel {
+    const title = 'View Settings';
+    const create = 'Create communication link';
+}
+
+namespace language\en\applications\customer\contact\views\upsert\tabs {
+    const contact = 'Site';
+    const contact_human = 'Referent';
+    const contact_reference = 'Branch';
+    const contact_sharing = 'Share';
+    const contact_book = 'Address book';
+}
+
+namespace language\en\applications\customer\contact\views\upsert\form\dropdown {
+    const void = 'No result';
+}
+
+namespace language\en\applications\customer\contact\views\upsert\modal\book\remove {
+    const title = 'You are about to remove $0 people from this company\'s Address Book!';
+    const notice = 'Proceeding with this action the contacts will not be permanently deleted from the system. You can manually add them back later.';
+}
+
+namespace language\en\applications\customer\contact\views\upsert\modal\associate {
+    const title = 'Associate a new person';
+    const notice = 'Choose the person to associate with this company\'s address book.';
+}
+
+namespace language\en\applications\customer\contact\views\upsert\modal\reference\remove {
+    const title = 'You are about to dissociate $0 companies!';
+    const notice = 'Only companies with a unique VAT number can be dissociated from the list. If you are trying to dissociate a company without a VAT number the action will be automatically canceled.';
+}
+
+namespace language\en\applications\customer\contact\views\upsert\buttons {
+    const close = 'Close';
+    const cancel = 'Undo';
+    const confirm = 'Confirm';
+    const loader = 'Saving in progress';
+    const dissociate = 'Dissociate';
+    const associate = 'Associate';
+    const add = 'Add';
+    const newbook = 'New';
+    const save = 'Save';
+    const submit_public = 'Publish';
 }
 
 namespace language\en\applications\customer\contact\views\upsert\infinite {
@@ -33,46 +74,7 @@ namespace language\en\applications\customer\contact\views\upsert\infinite {
 }
 
 namespace language\en\applications\customer\contact\views\upsert\infinite\setting {
-    const placeholder = 'Type to search';
-}
-
-namespace language\en\applications\customer\contact\views\upsert\form\dropdown {
-    const void = 'No result';
-}
-
-namespace language\en\applications\customer\contact\views\upsert\modal {
-    const title = 'View settings';
-    const notice = 'Choose which field show and in which order';
-}
-
-namespace language\en\applications\customer\contact\views\upsert\nav\buttons {
-    const edit = 'edit';
-    const add = 'Add';
-    const dissociate = 'Dissociate';
-    const show_settings = 'show settings';
-    const hide_settings = 'hide settings';
-    const loader = 'Saving in progress';
-}
-
-namespace language\en\applications\customer\contact\views\upsert\sidepanel {
-    const title = 'View Settings';
-}
-
-namespace language\en\applications\customer\contact\views\upsert\tabs {
-    const sharing = 'Sharing';
-}
-
-namespace language\en\applications\customer\contact\views\upsert\modal\warning {
-    const title = 'You are about to dissociate $0 companies!';
-    const notice = 'Only companies with a unique tax number can be dissociated from the list. If you are trying to dissociate a company without a proprietary tax, the action will be automatically canceled.';
-}
-
-namespace language\en\applications\customer\contact\views\upsert\buttons{
-    const close = 'Close';
-    const cancel = 'Cancel';
-    const confirm = 'Confirm';
-    const loader = 'Saving in progress';
-    const dissociate = 'Dissociate';
+    const placeholder = 'Search';
 }
 
 // END - ENG ==========================================================
@@ -89,48 +91,47 @@ namespace language\it\applications\customer\contact\views\upsert\nav {
     const edit = 'Modifica';
 }
 
-namespace language\it\applications\customer\contact\views\upsert\button {
-    const add = 'Crea';
-    const save = 'Salva';
-    const submit_public = 'Pubblica';
-    const loader = 'Salvataggio in corso';
-}
-
 namespace language\it\applications\customer\contact\views\upsert\nav\buttons {
-    const edit = 'modifica';
+    const edit = 'Modifica';
+    const associate = 'Associa persone';
     const add = 'Aggiungi';
     const dissociate = 'Dissocia';
-    const show_settings = 'mostra impostazioni';
-    const hide_settings = 'nascondi impostazioni';
+    const remove = 'Rimuovi persone';
+    const show_settings = 'Mostra impostazioni';
+    const hide_settings = 'Nascondi impostazioni';
     const loader = 'Salvataggio in corso';
 }
 
 namespace language\it\applications\customer\contact\views\upsert\sidepanel {
     const title = 'Impostazioni Vista';
-}
-
-namespace language\it\applications\customer\contact\views\upsert {
-    const contact = 'Sede legale';
-    const contact_human = 'Referente';
-    const contact_reference = 'Succursale';
+    const create = 'Crea collegamento di comunicazione';
 }
 
 namespace language\it\applications\customer\contact\views\upsert\tabs {
-    const sharing = 'Condivisione';
+    const contact = 'Sede';
+    const contact_human = 'Referente';
+    const contact_reference = 'Succursali';
+    const contact_sharing = 'Condivisione';
+    const contact_book = 'Rubrica';
 }
 
 namespace language\it\applications\customer\contact\views\upsert\form\dropdown {
     const void = 'Nessun Risultato';
 }
 
-namespace language\it\applications\customer\contact\views\upsert\modal {
-    const title = 'Impostazioni di visualizzazione';
-    const notice = 'Seleziona quali campi visualizzare e in quale ordine';
+namespace language\it\applications\customer\contact\views\upsert\modal\book\remove {
+    const title = 'Stai per rimuove $0 persone dalla rubrica di questa azienda!';
+    const notice = 'Procedendo con questa azione i contatti non saranno eliminati definitivamente dal sistema. Potrai riaggiungerli manualmente in un secondo momento.';
 }
 
-namespace language\it\applications\customer\contact\views\upsert\modal\warning {
+namespace language\it\applications\customer\contact\views\upsert\modal\associate {
+    const title = 'Associa una nuova persona';
+    const notice = 'Scegli la persona da associare alla rubrica di questa azienda.';
+}
+
+namespace language\it\applications\customer\contact\views\upsert\modal\reference\remove {
     const title = 'Stai per dissociare $0 aziende!';
-    const notice = 'Dall\'elenco si possono dissociare solo le aziende aventi una partita di imposta univoca. Se si sta tentando di dissociare un\'azienda senza partita di imposta propietaria l\'azione sarà annullata automaticamente.';
+    const notice = 'Dall\'elenco si possono dissociare solo le aziende aventi una partita IVA univoca. Se si sta tentando di dissociare un\'azienda senza partita IVA l\'azione sarà annullata automaticamente.';
 }
 
 namespace language\it\applications\customer\contact\views\upsert\buttons {
@@ -139,6 +140,11 @@ namespace language\it\applications\customer\contact\views\upsert\buttons {
     const confirm = 'Conferma';
     const loader = 'Salvataggio in corso';
     const dissociate = 'Dissocia';
+    const associate = 'Associa';
+    const add = 'Crea';
+    const newbook = 'Nuovo';
+    const save = 'Salva';
+    const submit_public = 'Pubblica';
 }
 
 namespace language\it\applications\customer\contact\views\upsert\infinite {

@@ -36,7 +36,8 @@ $contact_field_key_value = basename($contact_field_key_value);
 
 $post = Request::post();
 $post = array_filter((array)$post, function ($item) {
-    return !is_string($item) && !is_numeric($item) || strlen((string)$item);
+    return !is_string($item) && !is_numeric($item)
+            || strlen((string)$item);
 });
 
 $hierarchy_query = User::getHierarchy(User::INCLUDEME, User::QUERYMODE);

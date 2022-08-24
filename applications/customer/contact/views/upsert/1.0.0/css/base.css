@@ -4,14 +4,15 @@ div#main div#wrapper { position: absolute; top: 63px; left: 0; bottom: 0; right:
 div#main div#wrapper div#content { padding: 24px; }
 div#main.menu-crush { left: 50px; }
 
-div#main div#content div.buttons-form { position: relative; margin-top: 1rem; margin-bottom: 1rem; text-align: right; }
-div#main div#content div.buttons-form button { margin: 8px; margin-right: 4px; }
-div#main div#content div.buttons-form button:last-child { margin-right: 0 !important; }
-div#main div#content div.buttons-form.hide { display: none; }
-
-div.modal div.wrapper article.content div.widget-infinite-setting { position: relative; margin-top: 16px; height: 320px; }
-
-div.modal div.wrapper article.content div.buttons-form { position: relative; margin-top: 16px; padding: 4px; text-align: right; }
+div.buttons-form { position: relative; margin-top: 1rem; margin-bottom: 1rem; text-align: right; }
+div.buttons-form button { margin: 8px; margin-right: 4px; }
+div.buttons-form button:last-child { margin-right: 0 !important; }
+div.buttons-form.hide { display: none; }
 
 div#main div.sidepanel div.content div#setting div.search, div#main div.sidepanel div.content div#setting div.list { margin-left: 8px; }
 div#main div.sidepanel div.content div#setting div.search { margin-right: 8px; }
+
+div#main div#tabcontent { padding: 8px; }
+
+table.infinite thead tr th.picture { width: 48px; }
+table.infinite tbody tr td div.result img { width: 24px; height: 24px; padding: 4px; }

@@ -17,6 +17,7 @@ namespace language\en\applications\customer\contact\forms\upsert\field {
     const contact_domain = 'Customer internet domains';
     const related = 'This contact is related to';
     const owner = 'Owner';
+    const book = 'Person';
     const share = 'Share with other hierarchy';
 }
 
@@ -148,6 +149,7 @@ namespace language\it\applications\customer\contact\forms\upsert\field {
     const contact_domain = 'Domini internet del cliente';
     const related = 'Quest\'azienda è filiale di';
     const owner = 'Propietario';
+    const book = 'Persona';
     const share = 'Condividi con altre gerarchie';
 }
 

@@ -35,7 +35,7 @@
 		"widget/form": "6.0.1",
 		"widget/button": "4.0.1",
 		"widget/xhr": "3.0.0",
-		"widget/asset": "6.0.2"
+		"widget/asset": "6.1.0"
 	},
 	"autoload": {
 		"psr-4": {

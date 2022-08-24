@@ -21,12 +21,17 @@ const WIDGETS = [
 $navigator = Navigator::get();
 
 $policies_application_basename = IAMConfiguration::getApplicationBasename();
-$policies = Sso::getPolicies($policies_application_basename . '/' . '%', 'iam/user/view/upsert', 'iam/user/action/update/me');
+$policies = Sso::getPolicies(
+    $policies_application_basename . '/' . '%',
+    'iam/user/view/upsert',
+    'iam/user/action/update/me'
+);
 
-$setting = [];
+$setting = array();
 foreach (WIDGETS as $widget) {
     $navigator_widget = $navigator;
-    if (4 === array_push($navigator_widget, $widget)) $setting[$widget] = User::getSettings(...$navigator_widget);
+    if (4 === array_push($navigator_widget, $widget))
+        $setting[$widget] = User::getSettings(...$navigator_widget);
 }
 
 $read = new Read();

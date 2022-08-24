@@ -126,6 +126,10 @@
         this.getLoader().apply(text);
 
         widgets.form.request();
+        
+        setTimeout(function (button) {
+            button.getLoader().remove();
+        }, 2048, this);
     });
 
     window.elements.actions.appendChild(submit.out());

@@ -29,7 +29,8 @@ $contact_field_key_value = basename($contact_field_key_value);
 
 $contact = new Contact();
 $contact_fields = $contact->getFields();
-foreach ($contact_fields as $field) $field->setProtected(true);
+foreach ($contact_fields as $field)
+    $field->setProtected(true);
 
 $contact->getField(Arango::KEY)->setProtected(false)->setRequired(true)->setValue($contact_field_key_value);
 
@@ -48,12 +49,9 @@ foreach ($follow as $name) {
     $contact->useEdge($name)->setForceDirection(Edge::OUTBOUND);
 }
 
-IAMRequest::setOverload('iam/user/action/hierarchy');
-$hierarchy = Contact::getCheckMyHierarchy($contact_field_key_value);
-
 $contact_query_delete = $contact_query->remove();
 $contact_query_delete->setActionOnlyEdges(false);
-$contact_query_delete->pushStatementsPreliminary($hierarchy);
+$contact_query_delete->pushStatementsPreliminary(Contact::getCheckMyHierarchy($contact_field_key_value));
 $contact_query_delete_return = 'RETURN' . chr(32) . Handling::ROLD;
 $contact_query_delete->getReturn()->setPlain($contact_query_delete_return);
 $contact_query_delete->setEntityEnableReturns($contact);

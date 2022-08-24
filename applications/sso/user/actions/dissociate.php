@@ -1,23 +1,23 @@
 <?PHP
 
-namespace applications\customer\contact\actions;
+namespace applications\sso\user\actions;
 
 use IAM\Sso;
 use IAM\Configuration as IAMConfiguration;
 
 use Knight\armor\Output;
+use Knight\armor\Request;
 use Knight\armor\Language;
 use Knight\armor\Navigator;
 
 use ArangoDB\Initiator as ArangoDB;
-use ArangoDB\entity\Edge;
 use ArangoDB\entity\common\Arango;
 
 use applications\customer\contact\database\Vertex as Contact;
-use applications\customer\contact\database\edges\ContactToContact;
+use applications\customer\contact\database\edges\ContactToUser;
 
 $application_basename = IAMConfiguration::getApplicationBasename();
-if (Sso::youHaveNoPolicies($application_basename . '/customer/contact/action/update')) Output::print(false);
+if (Sso::youHaveNoPolicies($application_basename . '/sso/user/action/dissociate')) Output::print(false);
 
 $contact_field_key_value = parse_url($_SERVER[Navigator::REQUEST_URI], PHP_URL_PATH);
 $contact_field_key_value = basename($contact_field_key_value);
@@ -39,7 +39,21 @@ if (!!$errors = $contact->checkRequired()->getAllFieldsWarning()) {
 }
 
 $contact_query = ArangoDB::start($contact);
-$contact->useEdge(ContactToContact::getName())->setForceDirection(Edge::INBOUND);
+$contact_query_book = (array)Request::post('book') ?? array();
+if (empty($contact_query_book)) Output::print(false);
+foreach ($contact_query_book as $id) {
+    $edge = $contact->useEdge(ContactToUser::getName());
+    $edge->getField('book')->setProtected(false)->setValue(true);
+    $user = $edge->vertex();
+    $user_fields = $user->getFields();
+    foreach ($user_fields as $field)
+        $field->setRequired(false);
+
+    $user->getField(Arango::KEY)->setProtected(false)->setRequired(true)->setValue($id);
+    if (!!$user->checkRequired(true)->getAllFieldsWarning())
+        Output::print(false);
+}
+
 $user_query_remove = $contact_query->remove();
 $user_query_remove->pushStatementsPreliminary(Contact::getCheckMyHierarchy($contact_field_key_value));
 $user_query_remove->setActionOnlyEdges(true);

@@ -34,7 +34,6 @@ $upsert = new Upsert();
 if ($upsert->checkFieldExists('owner')) {
     $upsert_owner = $upsert->getField('owner');
     $upsert_owner->setProtected(false)->setRequired(true);
-    IAMRequest::setOverload('iam/user/action/hierarchy');
     $hierarchy = User::getHierarchy(User::INCLUDEME);
     if (false === in_array($upsert_owner->getValue(), $hierarchy, false)) $upsert_owner->setDefault();
 }
@@ -53,7 +52,8 @@ if (!!$errors = $upsert->checkRequired(true)->getAllFieldsWarning()) {
 
 $contact = new Contact();
 $contact_fields = $contact->getFields();
-foreach ($contact_fields as $field) $field->setProtected(false);
+foreach ($contact_fields as $field)
+    $field->setProtected(false);
 
 if ($upsert->checkFieldExists('owner'))
     $contact->getField('owner')->setProtected(false)->setRequired(true);
