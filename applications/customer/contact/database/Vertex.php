@@ -129,7 +129,6 @@ class Vertex extends EVertex
 		$contact_province = $this->getField('contact_province');
 		$contact_province_value = $contact_province->getValue();
 		$contact_province_value = $curl_response_address->administrative_area_level_2
-			?? $curl_response_address->country
 			?? false;
 		if (is_string($contact_province_value))
 			$contact_province->setValue($contact_province_value);
