@@ -114,15 +114,29 @@ class Vertex extends EVertex
 		if (property_exists($curl_response_address, 'street_number')) $this->getField('contact_address_number')->setValue($curl_response_address->street_number);
 		if (property_exists($curl_response_address, 'postal_code')) $this->getField('contact_zip')->setValue($curl_response_address->postal_code);
 
-		foreach (Google::GOOGLE_API_CITY as $item) {
-			if (!!!property_exists($curl_response_address, $item)) continue;
-			$this->getField('contact_city')->setValue($curl_response_address->{$item});
-			break;
-		}
+		$contact_city = $this->getField('contact_city');
+		$contact_city_value = $contact_city->getValue();
+		$contact_city_value = $curl_response_address->administrative_area_level_5
+			?? $curl_response_address->administrative_area_level_4
+			?? $curl_response_address->administrative_area_level_3
+			?? $curl_response_address->locality
+			?? $curl_response_address->administrative_area_level_2
+			?? $curl_response_address->administrative_area_level_1
+			?? false;
+		if (is_string($contact_city_value))
+			$contact_city->setValue($contact_city_value);
+
+		$contact_province = $this->getField('contact_province');
+		$contact_province_value = $contact_province->getValue();
+		$contact_province_value = $curl_response_address->administrative_area_level_2
+			?? $curl_response_address->country
+			?? false;
+		if (is_string($contact_province_value))
+			$contact_province->setValue($contact_province_value);
 
 		$curl_response_address = (object)array_column($curl_response->address_components, 'short_name', 'types');
-
-		if (property_exists($curl_response_address, 'country')) $this->getField('contact_country')->setValue(mb_strtolower($curl_response_address->country));
+		if (property_exists($curl_response_address, 'country'))
+			$this->getField('contact_country')->setValue(mb_strtolower($curl_response_address->country));
 
 		$point = $this->getPoint();
 		if (null === $point) return $this;
