@@ -29,7 +29,7 @@ class Upsert extends Vertex
     const USER_READ = '/api/sso/user/gateway/iam/iam/user/read';
     const USER_READ_RESPONSE = 'data';
     const USER_READ_RESPONSE_FIELDS = [
-        'username',
+        'lastname',
         'firstname',
         'email'
     ];
