@@ -6,6 +6,7 @@ use IAM\Sso;
 use IAM\Configuration as IAMConfiguration;
 
 use Knight\armor\Output;
+use Knight\armor\output\Data;
 use Knight\armor\Request;
 use Knight\armor\Navigator;
 
@@ -131,16 +132,16 @@ $hierarchy_query_select->getReturn()->setFromStatement($hierarchy_query_select_r
 $hierarchy_query_select_response = $hierarchy_query_select->run();
 if (null === $hierarchy_query_select_response) Output::print(false);
 
+$contact = new Contact();
+$contact->setSafeMode(false)->setReadMode(true);
+
 if (!!$only = Request::get('only')) if (is_string($only)) {
-    $only_fields = explode(chr(44), $only);
+    $only_fields = Data::only($contact->getField('id_contact')->getName());
     $only_fields = array_fill_keys($only_fields, null);
     array_walk($hierarchy_query_select_response, function (array &$value) use ($only_fields) {
         $value = array_intersect_key($value, $only_fields);
     });
 }
-
-$contact = new Contact();
-$contact->setSafeMode(false)->setReadMode(true);
 
 array_walk($hierarchy_query_select_response, function (&$value) use ($contact, $only) {
     $clone = clone $contact;

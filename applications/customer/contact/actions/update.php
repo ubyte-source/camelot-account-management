@@ -76,10 +76,11 @@ $contact_query_upsert = $contact_query->upsert();
 $contact_query_upsert->setReplace(true);
 $contact_query_upsert->setActionOnlyEdges(false);
 $contact_query_upsert->pushStatementSkipValues(...$management);
-$contact_query_upsert->pushStatementsPreliminary(Contact::getCheckMyHierarchy($contact_field_key_value));
 $contact_query_upsert_return = 'RETURN' . chr(32) . Handling::RNEW;
 $contact_query_upsert->getReturn()->setPlain($contact_query_upsert_return);
 $contact_query_upsert->setEntityEnableReturns($contact);
+if (Sso::youHaveNoPolicies($application_basename . '/customer/contact/action/update/all'))
+    $contact_query_upsert->pushStatementsPreliminary(Contact::getCheckMyHierarchy($contact_field_key_value));
 
 $remove = new Contact();
 $remove->getField(Arango::KEY)->setProtected(false)->setValue($contact_field_key_value);
