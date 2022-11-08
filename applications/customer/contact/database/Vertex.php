@@ -87,8 +87,8 @@ class Vertex extends EVertex
 				array_push($address, $field_value);
 			}
 		}
-		$address = implode(chr(44), $address);
 
+		$address = implode(chr(44), $address);
         $address = preg_replace('/[\r\n]/', chr(32), $address);
         $address = mb_convert_encoding($address, 'UTF-8');
 		$address = urlencode($address);
@@ -103,7 +103,6 @@ class Vertex extends EVertex
 		$google->setProtected(true);
 
 		$curl_response = reset($curl_response->results);
-
 		array_walk($curl_response->address_components, function ($item) {
 			$item->types = reset($item->types);
 		});
@@ -114,21 +113,19 @@ class Vertex extends EVertex
 		if (property_exists($curl_response_address, 'street_number')) $this->getField('contact_address_number')->setValue($curl_response_address->street_number);
 		if (property_exists($curl_response_address, 'postal_code')) $this->getField('contact_zip')->setValue($curl_response_address->postal_code);
 
+		$curl_response_address_keys = array_keys((array)$curl_response_address);
+		$curl_response_address_keys = preg_grep('/(administrative_area_level|locality)/', $curl_response_address_keys);
+		$curl_response_address_keys = array_fill_keys($curl_response_address_keys, null);
+		$curl_response_address_city = array_intersect_key((array)$curl_response_address, $curl_response_address_keys);
+		$curl_response_address_city = reset($curl_response_address_city);
+
 		$contact_city = $this->getField('contact_city');
-		$contact_city_value = $contact_city->getValue();
-		$contact_city_value = $curl_response_address->administrative_area_level_5
-			?? $curl_response_address->administrative_area_level_4
-			?? $curl_response_address->administrative_area_level_3
-			?? $curl_response_address->locality
-			?? $curl_response_address->administrative_area_level_2
-			?? $curl_response_address->administrative_area_level_1
-			?? false;
-		if (is_string($contact_city_value))
-			$contact_city->setValue($contact_city_value);
+		if (is_string($curl_response_address_city))
+			$contact_city->setValue($curl_response_address_city);
 
 		$contact_province = $this->getField('contact_province');
-		$contact_province_value = $contact_province->getValue();
 		$contact_province_value = $curl_response_address->administrative_area_level_2
+			?? $curl_response_address->administrative_area_level_3
 			?? false;
 		if (is_string($contact_province_value))
 			$contact_province->setValue($contact_province_value);
@@ -404,7 +401,6 @@ class Vertex extends EVertex
 		$contact_province->setPatterns($contact_province_pattern);
 		$contact_province->getRow()->setName('peculiarity');
 		$contact_province->addUniqueness(static::LOCATION);
-		$contact_province->setRequired();
 
 		$contact_zip = $this->addField('contact_zip');
 		$contact_zip_pattern = Validation::factory('ShowString');
