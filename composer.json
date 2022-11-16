@@ -22,7 +22,7 @@
 		"ext-mbstring": "*",
 		"ext-zip": "*",
 		"knight/armor": "3.2.2",
-		"knight/artifact-entity": "5.9.6",
+		"knight/artifact-entity": "5.9.7",
 		"knight/artifact-entity-adapter-arangodb": "1.8.1",
 		"knight/artifact-iam": "2.6.1",
 		"widget/tabs": "5.0.0",
