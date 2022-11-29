@@ -34,7 +34,7 @@ while sleep 8 & wait $!; do
     # If the greps above find anything, they exit with 0 status
     # If they are not both 0, then something is wrong
 
-    if [ $? -ne 0 ]; then
+    if [ $? -ne 0 ] ; then
       echo "The processes ${process} already exited."
       runner
     fi
