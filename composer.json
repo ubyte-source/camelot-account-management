@@ -24,7 +24,7 @@
 		"knight/armor": "3.3.0",
 		"knight/artifact-entity": "5.9.7",
 		"knight/artifact-entity-adapter-arangodb": "1.8.1",
-		"knight/artifact-iam": "2.7.2",
+		"knight/artifact-iam": "2.7.3",
 		"widget/tabs": "5.0.0",
 		"widget/sidepanel": "5.0.0",
 		"widget/nav": "5.0.0",
