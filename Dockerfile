@@ -1,10 +1,9 @@
-FROM amd64/alpine:3.16
+FROM amd64/alpine:3.17
 
 ENV STARTUP_COMMAND_RUN_PHP="php-fpm81 -F" \
     STARTUP_COMMAND_RUN_NGINX="nginx"
 
-ARG APPLICATION="account" \
-    PHP_FPM_USER="www" \
+ARG PHP_FPM_USER="www" \
     PHP_FPM_GROUP="www" \
     PHP_FPM_LISTEN_MODE="0660" \
     PHP_MEMORY_LIMIT="64M" \
@@ -36,7 +35,6 @@ RUN adduser -D -g www www && \
     chmod +x /wrapper.sh && \
     rm -Rf /app/ssl /app/wrapper.sh /app/nginx.conf /etc/nginx/sites-enabled /etc/nginx/sites-available && \
     cp -r /usr/share/zoneinfo/${TIMEZONE} /etc/localtime && \
-    echo "127.0.0.1 ${APPLICATION}.energia-europa.com" >> /etc/hosts && \
     echo "${TIMEZONE}" > /etc/timezone
 
 RUN sed -i "s|;*listen.owner\s*=\s*.*|listen.owner = ${PHP_FPM_USER}|g" /etc/php81/php-fpm.d/www.conf && \
