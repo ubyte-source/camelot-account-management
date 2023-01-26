@@ -34,7 +34,7 @@
 		"widget/header": "4.0.0",
 		"widget/form": "6.0.2",
 		"widget/button": "4.0.1",
-		"widget/xhr": "3.0.0",
+		"widget/xhr": "3.1.0",
 		"widget/asset": "6.1.1"
 	},
 	"autoload": {

@@ -63,7 +63,6 @@ $setting_value_valid = array_filter($setting_value->getValue(), function (Entity
 $setting_value_valid = array_values($setting_value_valid);
 $setting_value->setValue($setting_value_valid, Field::OVERRIDE);
 
-
 $query_upsert = $user_query->upsert();
 $query_upsert->pushStatementsFinal($user_query_select_statement);
 $query_upsert->setActionOnlyEdges(false);

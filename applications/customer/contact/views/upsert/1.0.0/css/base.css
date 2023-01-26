@@ -1,7 +1,8 @@
-div#main { transition: all 0.2s ease-out; z-index: 1024; }
-div#main { position: fixed; top: 50px; right: 0; bottom: 0; left: 250px; }
-div#main div#wrapper { position: absolute; top: 63px; left: 0; bottom: 0; right: 0; overflow-y: auto; }
-div#main div#wrapper div#content { padding: 24px; }
+div#main, div#content { transition: all 0.2s ease-out; }
+div#main { position: absolute; top: 50px; right: 0; left: 250px; bottom: 0; overflow: hidden; }
+div#main div#wrapper { right: 0; left: 0; position: absolute; top: 63px; bottom: 0; }
+div#main div#wrapper div#content { padding: 24px; padding-bottom: 0; }
+
 div#main.menu-crush { left: 50px; }
 
 div.buttons-form { position: relative; margin-top: 1rem; margin-bottom: 1rem; text-align: right; }
